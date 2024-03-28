@@ -1,0 +1,36 @@
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contenedorEstudiantes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 30px;
+    width: 150vh;
+}
+.cardEstudiante{
+    background-color: whitesmoke;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.273);
+
+}
+
+.estudiante{
+    background-color: rgb(83, 123, 110);
+    color: white;
+    text-transform: capitalize;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.docente{
+    background-color: rgb(169, 198, 188);
+    color: rgb(0, 0, 0);
+    text-transform: capitalize;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
