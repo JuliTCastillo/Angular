@@ -1,2 +1,29 @@
-<p>home works!</p>
-<app-reactive-form></app-reactive-form>
+<div>
+    <h2>Bienvenido/a</h2>
+    <div>
+        <h4>SubTitulo</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, asperiores dolor. Omnis cumque delectus pariatur, voluptatum voluptates sit harum excepturi rerum aliquam, dolore magni! Ducimus deserunt voluptatem placeat eaque alias!</p>
+    </div>
+
+    <div class="d-flex justify-content-around">
+      @for(curso of cursos; track $index){
+        <div class="card" style="width: 18rem;">
+          <img src="{{curso.imagen}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{curso.nombre}}</h5>
+              <p class="card-text">{{curso.descripcion}}</p>
+              <a href="#" class="btn btn-primary">Mas info</a>
+            </div>
+        </div>
+      }
+    </div>
+    <!-- <div class="contenedorAlumnos">
+      <h2>Vea la lista de nuestros estudiantes 👀</h2>
+      <app-students></app-students>
+    </div> -->
+    <div class="m-5">
+        <h3>Ingrese el nuevo usuario!</h3>
+        <app-reactive-form></app-reactive-form>
+    </div>
+</div>
+

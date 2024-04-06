@@ -1,0 +1,15 @@
+.menu-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95%;
+
+    ul{
+        list-style: none;
+        
+        a{
+            color: black;
+            text-decoration: none;
+        }
+    }
+}
