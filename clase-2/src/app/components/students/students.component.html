@@ -1,15 +1,12 @@
 <div class="contenedor">
     <button (click)="visualizarLista()">Ver lista</button>
 
-    @if(listaVisible){
-        <div class="contenedorEstudiantes">
-            @for(estudiante of estudiantes; track $index){
-                <div class="cardEstudiante">
-                    <p>Nombre: {{estudiante.nombre}}</p>
-                    <p>Apellido: {{estudiante.apellido}}</p>
-                    <p [ngClass] = "estudiante.rol == 'estudiante' ? 'estudiante' : 'docente'">{{estudiante.rol}}</p>
-                </div>
-            }
-        </div>
-    }
+    <div class="contenedorEstudiantes" *ngIf="listaVisible">
+    <div *ngFor="let estudiante of estudiantes; let i = index" class="cardEstudiante">
+        <p>Nombre: {{ estudiante.nombre }}</p>
+        <p>Apellido: {{ estudiante.apellido }}</p>
+        <p [ngClass]="estudiante.rol === 'estudiante' ? 'estudiante' : 'docente'">{{ estudiante.rol }}</p>
+    </div>
+</div>
+
 </div>

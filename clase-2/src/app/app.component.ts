@@ -7,8 +7,6 @@ import { ContenedorComponent } from './components/contenedor/contenedor.componen
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, ToolbarComponent, MenuComponent, ContenedorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
