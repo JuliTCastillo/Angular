@@ -1,0 +1,17 @@
+.toolbar-container{
+    background-color: #2e4343;
+    grid-column: span 2;
+}
+
+.grid-wrapper{
+    display: grid;
+    grid-template-columns: 40vh 4fr;
+}
+.sidenav-container{
+    background-color: #486b6b;
+}
+
+.page-wrapper{
+    background-color: #a3bdbd;
+    padding: 20px;
+}

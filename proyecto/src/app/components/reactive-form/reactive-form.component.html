@@ -1,0 +1,46 @@
+<form [formGroup]="formUser" (ngSubmit)="sendInfo()" class="w-25">
+    <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input 
+            formControlName="name" 
+            type="text" 
+            [ngClass]="nameControl?.status === 'VALID' ? 'is-valid' : ''" 
+            class="form-control" id="name"
+        >
+    </div>
+    <div class="mb-3">
+        <label for="lastname" class="form-label">Apellido</label>
+        <input 
+            formControlName="lastname" 
+            type="text" 
+            [ngClass]="lastNameControl?.status === 'VALID' ? 'is-valid' : ''"
+            class="form-control" 
+            id="lastname"
+        >
+    </div>
+    <div class="mb-3">
+        <label for="dni" class="form-label">DNI</label>
+        <input 
+            formControlName="dni" 
+            type="text" 
+            [ngClass]="{ 'is-valid': dniControl?.status === 'VALID' && dniControl?.value?.length === 8 }"
+            (keydown)="allowNumbers($event)"
+            class="form-control" 
+            id="dni"
+        >
+        @if(viewMessageError) {
+            <p class="messageError">Solo se admiten numeros</p>
+        }
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input 
+            formControlName="email" 
+            type="email" 
+            [ngClass]="emailControl?.status === 'VALID' ? 'is-valid' : ''" 
+            class="form-control" 
+            id="email"
+        >
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
