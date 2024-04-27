@@ -4,14 +4,13 @@
         #drawer 
         class="example-sidenav" 
         [mode] = "isMobile() ? 'over' : 'side'"
-    >
-        <p>Auto-resizing sidenav</p>
-        @if (showFiller) {
-        <p>Lorem, ipsum dolor sit amet consectetur.</p>
-        }
-        <button (click)="showFiller = !showFiller" mat-raised-button>
-            Toggle extra text
-        </button>
+    >   
+        <h3>Menu</h3>
+        <div class="row">
+            <button class="mb-2" mat-button>Login</button>
+            <button class="mb-2" mat-button>Home</button>
+            <button class="mb-2" mat-button>Usuario</button>
+        </div>
     </mat-drawer>
 
     <!--CONTENIDO DE LA DERECHA -->
@@ -23,9 +22,11 @@
             </button>
             <span>My Application</span>
         </mat-toolbar>
-        <main style="padding: 40px;">
+
+        <!-- Muestra los alumnos -->
+        <!-- <main style="padding: 40px;">
             <app-users></app-users>
-        </main>
+        </main> -->
     </div>
 
 </mat-drawer-container>

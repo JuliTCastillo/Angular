@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { IUser } from '../../models';
 
 @Component({
   selector: 'app-user-dialog',
@@ -9,8 +10,15 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class UserDialogComponent {
   userForm : FormGroup;
-
-  constructor(private formBuilder : FormBuilder, private matDialogRef: MatDialogRef<UserDialogComponent>){
+  mode = false;
+  //MatDialogRef 
+  constructor(
+    private formBuilder : FormBuilder, 
+    private matDialogRef: MatDialogRef<UserDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) private editUser? : IUser
+  ){
+    console.log(editUser)
+    //El objeto que nos va a mandar el formulario
     this.userForm = this.formBuilder.group({
       firstName: [
         '',
@@ -22,6 +30,7 @@ export class UserDialogComponent {
       lastName: [
         '',
         [
+          Validators.required,
           Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')
         ]
       ],
@@ -33,7 +42,13 @@ export class UserDialogComponent {
           Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}')
         ]
       ],
+      role: [['USER'],[Validators.required]]
     })
+
+    if(editUser != null){
+      this.mode = true;
+      this.userForm.patchValue(editUser)
+    }
   }
 
   onSave() : void{
@@ -41,8 +56,13 @@ export class UserDialogComponent {
       this.userForm.markAllAsTouched();
     }
     else{
-      //Si el Form es valido
-      this.matDialogRef.close(this.userForm.value);
+      if(this.editUser){
+        this.matDialogRef.close(this.userForm.value);  
+      }
+      else{
+        //Si el Form es valido e indicamos que información queremos mandarle
+        this.matDialogRef.close(this.userForm.value);
+      }
     }
   } 
 }

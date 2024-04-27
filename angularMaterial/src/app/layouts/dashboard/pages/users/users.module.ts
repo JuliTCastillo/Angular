@@ -8,15 +8,19 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 //IMPORTACIONES PARA EL DIALOGO porque es el que contiene
-import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
+import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+import { UserUpdateComponent } from './components/user-update/user-update.component';
 
 @NgModule({
   declarations: [
     UsersComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    UserUpdateComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    MatSelectModule,
+    MatIconModule
   ],
   exports: [UsersComponent]
 })
