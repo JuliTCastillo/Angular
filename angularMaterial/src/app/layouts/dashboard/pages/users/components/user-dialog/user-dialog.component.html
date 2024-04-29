@@ -15,7 +15,9 @@
                         <mat-form-field class="w-100" appearance="fill">
                             <mat-label>Nombre</mat-label>
                             <input formControlName="firstName" matInput>
-                            <mat-hint>El nombre debe tener al menos 3 caracteres</mat-hint>
+                            <mat-error>
+                                {{firstNameControl?.errors | formFieldValidationErrors}}
+                            </mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -26,7 +28,9 @@
                         <mat-form-field class="w-100" appearance="fill">
                             <mat-label>Apellido</mat-label>
                             <input formControlName="lastName" matInput>
-                            <mat-hint>El apellido debe tener al menos 3 caracteres</mat-hint>
+                            <mat-error>
+                                {{lastNameControl?.errors | formFieldValidationErrors}}
+                            </mat-error>
                         </mat-form-field>
                     </div>
                 </div>

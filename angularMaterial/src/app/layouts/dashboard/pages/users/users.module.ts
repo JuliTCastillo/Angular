@@ -15,6 +15,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { SharedModule } from '../../../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UserUpdateComponent } from './components/user-update/user-update.compon
     MatInputModule,
     ReactiveFormsModule, 
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    SharedModule,
   ],
   exports: [UsersComponent]
 })

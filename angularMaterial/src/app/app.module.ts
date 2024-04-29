@@ -8,12 +8,12 @@ import { DashboardModule } from './layouts/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DashboardModule
+    DashboardModule,
   ],
   providers: [
     provideAnimationsAsync()

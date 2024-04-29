@@ -24,14 +24,18 @@ export class UserDialogComponent {
         '',
         [
           Validators.required, 
-          Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')
+          Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'),
+          Validators.maxLength(20),
+          Validators.minLength(3)
         ]
       ],
       lastName: [
         '',
         [
-          Validators.required,
-          Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$')
+          Validators.required, 
+          Validators.pattern('^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+$'),
+          Validators.maxLength(20),
+          Validators.minLength(3)
         ]
       ],
       email: [
@@ -49,6 +53,14 @@ export class UserDialogComponent {
       this.mode = true;
       this.userForm.patchValue(editUser)
     }
+  }
+
+  get firstNameControl(){
+    return this.userForm.get("firstName");
+  }
+
+  get lastNameControl(){
+    return this.userForm.get("lastName")
   }
 
   onSave() : void{
