@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-end mb-3">
+    <button 
+    mat-button color="accent"
+    >
+    Crear usuario</button>
+</div>
+
+<table mat-table [dataSource]="products" class="mat-elevation-z8">
+    <!-- Position Column | ng-container agrupa el contenido -->
+    <ng-container matColumnDef="id">
+        <!-- Encabezado de la columna -->
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <!-- Valores de la columna-->
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <!-- Position Column | ng-container agrupa el contenido -->
+    <ng-container matColumnDef="name">
+        <!-- Encabezado de la columna -->
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <!-- Valores de la columna-->
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    <!-- Position Column | ng-container agrupa el contenido -->
+    <ng-container matColumnDef="price">
+        <!-- Encabezado de la columna -->
+        <th mat-header-cell *matHeaderCellDef>Precio</th>
+        <!-- Valores de la columna-->
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th class="text-center" mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td class="text-center" mat-cell *matCellDef="let element">
+            <!--Nombramos element que es del matCellDef, este obtiene los datos de la fila -->
+            <button mat-icon-button>
+                <mat-icon color="warn">delete</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon style="color:#5985E1">edit_square</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <!--Sin esto no se ve la tabla-->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
