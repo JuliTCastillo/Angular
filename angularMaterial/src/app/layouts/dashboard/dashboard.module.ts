@@ -13,6 +13,7 @@ import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-direc
 import { SharedModule } from '../../shared/shared.module';
 import { ProductsModule } from './pages/products/products.module';
 import { Clase09Module } from './pages/clase09/clase09.module';
+import { Clase10Module } from './pages/clase10/clase10.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { Clase09Module } from './pages/clase09/clase09.module';
     PipesYDirectivasModule,
     SharedModule,
     ProductsModule,
-    Clase09Module
+    Clase09Module, 
+    Clase10Module
   ],
   exports:[DashboardComponent]
 })

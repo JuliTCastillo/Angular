@@ -7,9 +7,16 @@
     >   
         <h3>Menu</h3>
         <div class="row">
-            <button class="mb-2" mat-button>Login</button>
-            <button class="mb-2" mat-button>Home</button>
-            <button class="mb-2" mat-button>Usuario</button>
+            <div class="row">
+                <button (click)="login()" class="mb-2" mat-button>Login</button>
+                <button class="mb-2" mat-button>Home</button>
+                <button class="mb-2" mat-button>Usuario</button>
+            </div>
+            @if(authUser$ | async){
+                <div class="row">
+                    <button class="mb-2" mat-button color="warn"(click) = "logout()">Cerrar Sessión</button>
+                </div>
+            }
         </div>
     </mat-drawer>
 
@@ -20,15 +27,29 @@
             <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
                 <mat-icon>menu</mat-icon>
             </button>
-            <span>My Application</span>
+            <div class="d-flex justify-content-between w-100 align-items-center">
+                <span>My Application</span>
+                <div>
+                    <p class="m-0 p-0 text-center">Nombre de usuario</p>
+                    <!--Preguntamos si la variable tiene algun valor, tambien le damos un alias-->
+                    <!--! SOLO FUNCIONA EN LOS IF-->
+                    @if(authUser$ | async; as user){
+                        <p class="m-0 p-0 text-center">{{user?.firstName}}</p>
+                    }
+                </div>
+            </div>
         </mat-toolbar>
 
         <!-- Muestra los alumnos -->
         <main style="padding: 40px;">
-            <app-clase09></app-clase09>
+            <button (click)="mostrarComponente = !mostrarComponente">
+                alternar componente
+            </button>
+            <!-- <app-clase10 *ngIf="mostrarComponente"></app-clase10> -->
+            <!-- <app-clase09></app-clase09>
             <hr>
             <h2>Componente de producto</h2>
-            <app-products></app-products>
+            <app-products></app-products> -->
             <!-- <app-pipes-y-directivas></app-pipes-y-directivas> -->
             <!-- <app-users></app-users> -->
         </main>
