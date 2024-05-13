@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IUser } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
@@ -6,6 +6,7 @@ import { UserDialogComponent } from './components/user-dialog/user-dialog.compon
 import Toastify from "toastify-js"
 import "toastify-js/src/toastify.css"
 import Swal from 'sweetalert2'
+import { UsersService } from './users.service';
 
 @Component({
   selector: 'app-users',
@@ -13,46 +14,41 @@ import Swal from 'sweetalert2'
   styleUrl: './users.component.scss'
 })
 
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   displayedColumns: string[] = [
-    'id', 
-    'firstName', 
-    'lastName', 
-    'email', 
-    'role', 
+    'id',
+    'firstName',
+    'lastName',
+    'email',
+    'role',
     'createdAt',
     'actions'
   ];
 
-  users: IUser[]=[
-      {
-      id: 1,
-      firstName : "Julieta",
-      lastName : "Castillo",
-      role: "ADMIN",
-      email : "julieta@correo.com",
-      createdAt : new Date()
-    },
-    {
-      id: 2,
-      firstName : "Valentina",
-      lastName : "Castillo",
-      role: "USER",
-      email : "valen@correo.com",
-      createdAt : new Date()
-    },
-    {
-      id: 3,
-      firstName : "Rocio",
-      lastName : "Castillo",
-      role: "USER",
-      email : "ro@correo.com",
-      createdAt : new Date()
-    }
-  ]
-  
+  loading = false;
+
+  users: IUser[] = [];
+
   //El dialogo solo va a tener acceso en esta clase
-  constructor(private matDialog:MatDialog){}
+  constructor(private matDialog: MatDialog, private usersService: UsersService) { }
+
+  ngOnInit(): void {
+    this.loading = true;
+    this.usersService.getUsers().subscribe({
+      next: (users) => {
+        console.log('next: ', users);
+        this.users = users;
+      },
+      error: (err) => {
+        console.log('error: ', err);
+        Swal.fire('Error', 'Ocurrio un error', 'error');
+      },
+      complete: () => {
+        console.log('complete');
+        this.loading = false;
+      },
+    });
+  }
 
   openDialog(): void {
     //el afterClose recibe algo, cuando se cierra el dialogo
@@ -60,16 +56,19 @@ export class UsersComponent {
       .open(UserDialogComponent)
       .afterClosed() //Retorna un observable
       .subscribe({   //Recibe el dato 
-        next:(result)=>{ //Obtiene el resultado del modal
+        next: (result) => { //Obtiene el resultado del modal
           console.log(result) //Mostramos
-          if(result){
+          if (result) {
             //Logica de crear el usuario
             //El push no funciona, para que angular pueda detectar el cambio se debe asignar en un nuevo array
-            
-            result.id = this.users.length + 1;
+            // result.id = this.users.length + 1;
             result.createdAt = new Date();
-            this.users = [...this.users, result]
-
+            
+            this.usersService.createUser(result).subscribe({
+              next:(usuarioCreado)=>{
+                this.users = [...this.users, usuarioCreado] 
+              }
+            })
             Toastify({
               text: "Usuario Creado!!",
               className: "info",
@@ -77,14 +76,14 @@ export class UsersComponent {
               position: "right", // `left`, `center` or `right`
               style: {
                 background: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 35%, rgba(255,0,185,1) 100%);",
-              }
+              } 
             }).showToast();
           }
         }
       });
   }
 
-  onDeleteUser(element : IUser) : void {
+  onDeleteUser(element: IUser): void {
     Swal.fire({
       title: "Eliminar usuario",
       text: `Estas seguro que queres eliminar a ${element.firstName} ${element.lastName}`,
@@ -93,10 +92,17 @@ export class UsersComponent {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire("Usuario Eliminado!", `Se borro a ${element.firstName} ${element.lastName}`, "success");
-          this.users = this.users.filter(user  => user.id != element.id);
-          console.log(this.users)
-      } else{
+        // console.log(this.users)
+        this.usersService.deleteUsersById(element.id).subscribe({
+          next: (users) => {
+            console.log('next: ', users);
+          },
+          complete: ()=>{
+            Swal.fire("Usuario Eliminado!", `Se borro a ${element.firstName} ${element.lastName}`, "success");
+            this.users = this.users.filter(user => user.id != element.id);
+          }
+        })
+      } else {
         Toastify({
           text: "Se cancelo la operación!!",
           className: "info",
@@ -110,7 +116,7 @@ export class UsersComponent {
     });
   }
 
-  onUpdateUser(user : IUser) : void{
+  onUpdateUser(user: IUser): void {
     console.log(user)
     this.matDialog
       .open(UserDialogComponent, {
@@ -118,12 +124,17 @@ export class UsersComponent {
       })
       .afterClosed() //Retorna un observable
       .subscribe({   //Recibe el dato 
-        next:(result)=>{ //Obtiene el resultado del modal
-          result.id = user.id;
+        next: (result) => { //Obtiene el resultado del modal
+          // result.id = user.id;
           result.createdAt = new Date();
+          
+          this.usersService.updateUsersById(user.id, result).subscribe({
+            next:()=>{
+              //Si en el mapeo encontramos un usuario con la misma id, lo pisamos con lo que nos llego, sino lo dejamos igual
+              this.users = this.users.map((u) => u.id == user.id ? { ...u, ...result } : u)
+            }
+          })
           console.log(result) //Mostramos
-          //Si en el mapeo encontramos un usuario con la misma id, lo pisamos con lo que nos llego, sino lo dejamos igual
-          this.users = this.users.map((u)=> u.id == user.id ? {...u, ...result} : u)
           Toastify({
             text: "Se edito el usuario!!",
             className: "info",

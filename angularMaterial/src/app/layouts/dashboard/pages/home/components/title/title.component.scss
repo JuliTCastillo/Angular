@@ -1,0 +1,53 @@
+$colorPrimario: #ec74c4;
+$colorSecundario: #91758b;
+.boxPadre{
+    display: flex;
+    position: relative;
+}
+
+.box {
+    width: 40px;
+    height: 40px;
+    margin: 0px 2px;
+    border-radius: 25%;
+    background-color: $colorPrimario; // Asigna el color primario por defecto
+    
+    &.animate {
+        animation: swing-bottom-fwd 3s ease-in-out forwards;
+    }
+    &.secundario{
+        position: absolute;
+        top: 0;
+        background-color: $colorSecundario;
+        z-index: -1;
+    }
+    &.animacion{
+        animation: boxSecundario 3s ease-in-out forwards;
+    }
+}
+.back{
+    position: absolute;
+    transform: rotateX(180deg);
+    z-index: -1;
+}
+
+@keyframes swing-bottom-fwd {
+    0% {
+        transform: rotateX(0);
+    }
+    100% {
+        transform: rotateX(-90deg);
+        // animation-fill-mode: forwards; /* Asegura que el estado final se mantenga */
+    }
+}
+
+@keyframes boxSecundario {
+    0% {
+        transform: rotateX(-90deg); /* Comienza desde el estado final de la primera animación */
+    }
+    100% {
+        transform: rotateX(-150deg);
+        // animation-fill-mode: forwards; /* Asegura que el estado final se mantenga */
+    }
+    
+}

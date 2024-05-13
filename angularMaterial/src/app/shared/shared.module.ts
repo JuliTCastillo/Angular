@@ -1,6 +1,6 @@
-  import { NgModule } from '@angular/core';
-  import { CommonModule } from '@angular/common';
-  import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-errors.pipe';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-errors.pipe';
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import { RepetirDirective } from './directives/repetir.directive';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -33,6 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
       FormFieldValidationErrorsPipe,
       ResaltadoDirective,
       RepetirDirective,
+      MatProgressSpinnerModule
     ],
   })
   export class SharedModule { }

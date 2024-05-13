@@ -14,10 +14,12 @@ import { SharedModule } from '../../shared/shared.module';
 import { ProductsModule } from './pages/products/products.module';
 import { Clase09Module } from './pages/clase09/clase09.module';
 import { Clase10Module } from './pages/clase10/clase10.module';
+import { LoginDialogComponent } from './pages/home/components/login-dialog/login-dialog.component';
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    LoginDialogComponent
   ],
   imports: [
     CommonModule,
@@ -31,9 +33,10 @@ import { Clase10Module } from './pages/clase10/clase10.module';
     SharedModule,
     ProductsModule,
     Clase09Module, 
-    Clase10Module
+    Clase10Module,
   ],
   exports:[DashboardComponent]
 })
 export class DashboardModule {
+  
 }

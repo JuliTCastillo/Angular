@@ -1,62 +1,64 @@
-<div class="d-flex justify-content-end mb-3">
-    <button 
-    mat-button color="accent"
-    (click) = "openDialog()"
-    >
-    Crear usuario</button>
+<div class="m-5">
+    <div class="d-flex justify-content-end mb-3">
+        <button mat-button color="accent" (click)="openDialog()">
+            Crear usuario</button>
+    </div>
+
+    <!-- dataSource indica de donde sacar los datos -->
+    <table mat-table [dataSource]="users" class="mat-elevation-z8">
+        <!-- Position Column | ng-container agrupa el contenido -->
+        <ng-container matColumnDef="id">
+            <!-- Encabezado de la columna -->
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <!-- Valores de la columna-->
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="firstName">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Nombre</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.firstName}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="lastName">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Apellido</th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Correo</th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Rol</th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.role}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="createdAt">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>CreatedAt</th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td class="text-center" mat-cell *matCellDef="let element">
+                <!--Nombramos element que es del matCellDef, este obtiene los datos de la fila -->
+                <button (click)="onDeleteUser(element)" mat-icon-button>
+                    <mat-icon color="warn">delete</mat-icon>
+                </button>
+                <button (click)="onUpdateUser(element)" mat-icon-button>
+                    <mat-icon style="color:#5985E1">edit_square</mat-icon>
+                </button>
+                <button [routerLink]="element.id" mat-icon-button color="primary">
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 </div>
-
-<!-- dataSource indica de donde sacar los datos -->
-<table mat-table [dataSource]="users" class="mat-elevation-z8">
-    <!-- Position Column | ng-container agrupa el contenido -->
-    <ng-container matColumnDef="id">
-        <!-- Encabezado de la columna -->
-        <th mat-header-cell *matHeaderCellDef>Id</th>
-        <!-- Valores de la columna-->
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="firstName" >
-        <th mat-header-cell *matHeaderCellDef class="text-center">Nombre</th>
-        <td mat-cell *matCellDef="let element" class="text-center"> {{element.firstName}} </td>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="lastName">
-        <th class="text-center" mat-header-cell *matHeaderCellDef>Apellido</th>
-        <td class="text-center" mat-cell *matCellDef="let element"> {{element.lastName}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-        <th class="text-center" mat-header-cell *matHeaderCellDef>Correo</th>
-        <td class="text-center" mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="role">
-        <th class="text-center" mat-header-cell *matHeaderCellDef>Rol</th>
-        <td class="text-center" mat-cell *matCellDef="let element" > {{element.role}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="createdAt">
-        <th class="text-center" mat-header-cell *matHeaderCellDef>CreatedAt</th>
-        <td class="text-center" mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="actions">
-        <th class="text-center" mat-header-cell *matHeaderCellDef>Acciones</th>
-        <td class="text-center" mat-cell *matCellDef="let element">
-            <!--Nombramos element que es del matCellDef, este obtiene los datos de la fila -->
-            <button (click)="onDeleteUser(element)" mat-icon-button>
-                <mat-icon color="warn">delete</mat-icon>
-            </button>
-            <button (click)="onUpdateUser(element)" mat-icon-button>
-                <mat-icon style="color:#5985E1">edit_square</mat-icon>
-            </button>
-        </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>

@@ -1,0 +1,10 @@
+<div class="boxPadre" #boxPadre>
+    @for(letra of palabras[0]; track letra; let index = $index){
+    <div>
+        <div class="d-flex justify-content-center boxLetter align-items-center box primario" #box>{{letra}}</div>
+        <div class="back">
+            <div class="d-flex justify-content-center boxLetter align-items-center box secundario" #box>{{palabras[1][index]}}</div>
+        </div>
+    </div>
+    }
+</div>

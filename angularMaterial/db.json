@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": "8eb0",
+      "firstName": "Valentina",
+      "lastName": "Castillo",
+      "email": "valen@correo.com",
+      "role": "USER"
+    },
+    {
+      "firstName": "Julieta",
+      "lastName": "Castillo",
+      "email": "juli@correo.com",
+      "role": "ADMIN",
+      "id": "3c88"
+    },
+    {
+      "firstName": "Rocio",
+      "lastName": "Castillo",
+      "email": "rocio@correo.com",
+      "role": "USER",
+      "createdAt": "2024-05-13T04:37:32.689Z",
+      "id": "13e4"
+    },
+    {
+      "id": "95fc",
+      "firstName": "Agustina",
+      "lastName": "Castillo",
+      "email": "agus@correo.com",
+      "role": "USER"
+    },
+    {
+      "id": "ee28",
+      "firstName": "Federico",
+      "lastName": "Castillo",
+      "email": "fede@correo.com",
+      "role": "USER"
+    }
+  ],
+  "sales": [],
+  "roles": []
+}
