@@ -3,7 +3,7 @@ export type UserRole = 'ADMIN' | 'USER';
 
 //Definimos nuestra interfaz y los tipo de datos que van a utilizar las propiedades
 export interface IUser{
-    id: number;
+    id: string;
     firstName : string;
     lastName : string;
     email : string;

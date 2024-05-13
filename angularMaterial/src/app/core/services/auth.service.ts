@@ -16,7 +16,7 @@ export class AuthService{
 
     login(): void{
         this._authUser$.next({
-            id: 5,
+            id: "5",
             createdAt: new Date(),
             email : "user@correo.com",
             firstName : "user01",

@@ -5,6 +5,8 @@ import { IUser } from './pages/users/models';
 import { HomeComponent } from './pages/home/home.component';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from './pages/home/components/login-dialog/login-dialog.component';
+import { GuardResult } from '@angular/router';
+import { LoginService } from './pages/home/components/login-dialog/login.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,15 +16,16 @@ import { LoginDialogComponent } from './pages/home/components/login-dialog/login
 export class DashboardComponent implements OnInit{
   showFiller = false;
   mostrarComponente = true; 
+  isAuth = this.loginService.verifyToken();
   //Va a guardar el valor del observable
-  authUser$ : Observable<IUser | null>;
-  
+  // authUser$ : Observable<IUser | null>;
   constructor(
-    private authService : AuthService,
-    private matDialog:MatDialog
+    // private authService : AuthService,
+    private loginService  : LoginService,
+    private matDialog:MatDialog,
   ){
     //Le asignamos el valor, ahora podemos mostrarlo en el HTML
-    this.authUser$ = this.authService.authUser$;
+    // this.authUser$ = this.authService.authUser$;
   }
 
    public openDialog(): void {
@@ -36,25 +39,29 @@ export class DashboardComponent implements OnInit{
            if(result){
              //Logica de crear el usuario
              //El push no funciona, para que angular pueda detectar el cambio se debe asignar en un nuevo array
-             console.log(result)            
+             console.log(result)    
+             this.isAuth = this.loginService.verifyToken()
+
            }
          }
        });
    }
 
-  ngOnInit(): void {}
-
-
-  login() : void{
-    this.authService.login();
+  ngOnInit(): void {
+    
   }
+
+
+  // login() : void{
+  //   this.authService.login();
+  // }
 
   logout() : void{
-    this.authService.logout();
+    // this.authService.logout();
   }
   isMobile(): boolean{
-    // return window.innerWidth <= 280 ;
-    return true
+    return window.innerWidth <= 280 ;
+    // return true
   }
 
   

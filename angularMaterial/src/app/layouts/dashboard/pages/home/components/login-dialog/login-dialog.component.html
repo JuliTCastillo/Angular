@@ -1,14 +1,14 @@
 <div class="m-2">
     <h2>Login</h2>
     <div>
-        <form [formGroup] = "loginForm">
+        <form [formGroup] = "loginForm" (ngSubmit)="login()">
             <div class="row">
                 <div class="col-6">
                     <div mat-dialog-content>
                         <!--Contenedor del input-->
                         <mat-form-field class="w-100" appearance="fill">
-                            <mat-label>Usuario</mat-label>
-                            <input formControlName="user" matInput>
+                            <mat-label>Email</mat-label>
+                            <input formControlName="email" matInput>
                         </mat-form-field>
                     </div>
                 </div>
@@ -23,10 +23,9 @@
                     </div>
                 </div>
             </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" mat-button>Iniciar</button>
+            </div>
         </form>
     </div>    
-    <div class="d-flex justify-content-end">
-        <button mat-dialog-close mat-button>Cancelar</button>
-        <button (click)="onSave()" mat-button>Guardar</button>
-    </div>
 </div>

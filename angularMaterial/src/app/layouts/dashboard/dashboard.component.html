@@ -11,22 +11,24 @@
                 <a routerLink="home">
                     <button class="mb-2" mat-button>Home</button>
                 </a>
-                <a routerLink="sales">
-                    <button class="mb-2" mat-button>Ventas</button>
-                </a>
-                <a routerLink="products">
-                    <button class="mb-2" mat-button>Productos</button>
-                </a>
-                <button (click)="openDialog()" class="mb-2" mat-button>Login</button>
-                <a routerLink="users" class="mb-2" >
-                    <button mat-button>Usuario</button>
-                </a>
+                @if(isAuth){
+                    <a routerLink="sales">
+                        <button class="mb-2" mat-button>Ventas</button>
+                    </a>
+                    <a routerLink="products">
+                        <button class="mb-2" mat-button>Productos</button>
+                    </a>
+                    <a routerLink="users" class="mb-2" >
+                        <button mat-button>Usuario</button>
+                    </a>
+                    <div class="row">
+                        <button class="mb-2" mat-button color="warn"(click) = "logout()">Cerrar Sessión</button>
+                    </div>
+                }
+                @else{
+                    <button (click)="openDialog()" class="mb-2" mat-button>Login</button>
+                }
             </div>
-            @if(authUser$ | async){
-                <div class="row">
-                    <button class="mb-2" mat-button color="warn"(click) = "logout()">Cerrar Sessión</button>
-                </div>
-            }
         </div>
     </mat-drawer>
 
@@ -43,9 +45,9 @@
                     <p class="m-0 p-0 text-center">Nombre de usuario</p>
                     <!--Preguntamos si la variable tiene algun valor, tambien le damos un alias-->
                     <!--! SOLO FUNCIONA EN LOS IF-->
-                    @if(authUser$ | async; as user){
+                    <!-- @if(authUser$ | async; as user){
                         <p class="m-0 p-0 text-center">{{user?.firstName}}</p>
-                    }
+                    } -->
                 </div>
             </div>
         </mat-toolbar>

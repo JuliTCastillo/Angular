@@ -9,8 +9,6 @@ import { environment } from '../environments/environment';
 export class AppComponent {
   title = 'angularMaterial';
   constructor(){
-    if(environment.isProd){
-      console.log(environment)
-    }
+
   }
 }

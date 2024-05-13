@@ -12,16 +12,16 @@ export class UsersService {
     constructor(private httpClient : HttpClient){}
 
     getUsers(): Observable<IUser[]>{
-        return this.httpClient.get<IUser[]>(environment.baseAPIURL + "/users")
+        return this.httpClient.get<IUser[]>(`${environment.baseAPIURL}/users`)
     }
-    getUserById(id : number): Observable<IUser | undefined>{
-        return this.httpClient.get<IUser>(environment.baseAPIURL + "/users/" + id);
+    getUserById(id : string): Observable<IUser | undefined>{
+        return this.httpClient.get<IUser>(`${environment.baseAPIURL}/users/${id}`);
     }
-    deleteUsersById(id : number): Observable<IUser | undefined>{
-        console.log(this.httpClient.get<IUser>(environment.baseAPIURL + "/users/" + id));
-        return this.httpClient.delete<IUser>(environment.baseAPIURL + "/users/" + id);
+    deleteUsersById(id : string): Observable<IUser | undefined>{
+        console.log(this.httpClient.get<IUser>(`${environment.baseAPIURL}/users/${id}`));
+        return this.httpClient.delete<IUser>(`${environment.baseAPIURL}/users/${id}`);
     }
-    updateUsersById(id : number, payload: CreateUserPayload): Observable<IUser | undefined>{
+    updateUsersById(id : string, payload: CreateUserPayload): Observable<IUser | undefined>{
         return this.httpClient.put<IUser>(
             `${environment.baseAPIURL}/users/${id}`,
             payload

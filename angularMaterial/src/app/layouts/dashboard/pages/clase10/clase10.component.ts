@@ -34,7 +34,7 @@ export class Clase10Component implements OnInit, OnDestroy{
       next: (value) =>{
         console.log(value)
         this.usuarioAutenticado$.next({
-          id: 1,
+          id: "1",
           createdAt: new Date(),
           email: "usuario@correo.com",
           firstName: "usuario1",
