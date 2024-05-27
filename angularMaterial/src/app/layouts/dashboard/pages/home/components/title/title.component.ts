@@ -38,19 +38,14 @@ export class TitleComponent implements AfterViewInit, OnInit{
         // Realizar acciones adicionales cuando la animación secundaria ha terminado
         if (box.classList.contains('secundario')) {
             box.classList.add('animacion');
-            box.style.transform = "rotate(-180deg)"; // No necesitas usar !important si no hay conflictos de especificidad
+            //box.style.transform = "rotate(-180deg)"; // No necesitas usar !important si no hay conflictos de especificidad
         }
-        if (nom.animationName.split('_')[2] == "boxSecundario") {
-            box.classList.remove("boxSecundario")
-            setTimeout(() => {
-                box.classList.add("animate")
-            }, 5000)
-
-            // Re-inicia la animación después de 5 segundos (ajusta el tiempo según sea necesario)
-            setTimeout(() => {
-                box.classList.add("animate");
-            }, 5000);
-        }
+        // if (nom.animationName.split('_')[2] == "boxSecundario") {
+        //     box.classList.remove("boxSecundario")
+        //     setTimeout(() => {
+        //         box.classList.add("animate")
+        //     }, 5000)
+        // }
 
     });
     });

@@ -2,7 +2,7 @@ import { IProduct } from "../../products/models";
 import { IUser } from "../../users/models";
 
 export interface ISale{
-    id: number;
+    id: string;
     product : IProduct;
     buyer: IUser;
     quantity: number; 

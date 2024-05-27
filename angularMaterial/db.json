@@ -38,5 +38,35 @@
     }
   ],
   "sales": [],
+  "product": [
+    {
+      "name": "Python",
+      "description": "Temas del curso bucles, condicionales, funciones y librerias, pandas y numpy",
+      "image": "https://cdn-icons-png.flaticon.com/128/1822/1822899.png",
+      "price": 12000,
+      "id": "6acd"
+    },
+    {
+      "id": "513a",
+      "name": "Desarrollo web",
+      "description": "Enseñamos a diseñar páginas estaticas con las tecnologías HTML, CSS y Bootstrap",
+      "image": "https://cdn-icons-png.flaticon.com/128/2085/2085206.png",
+      "price": 9000
+    },
+    {
+      "id": "abb0",
+      "name": "JavaScript",
+      "description": "Lenguaje de programación especializado en las páginas web",
+      "image": "https://cdn-icons-png.flaticon.com/128/5968/5968292.png",
+      "price": 14000
+    },
+    {
+      "id": "2dbb",
+      "name": "Excel",
+      "description": "Aprende el uso de excel de forma avanzada para poder usar durante el trabajo o de forma personal",
+      "image": "https://cdn-icons-png.flaticon.com/128/732/732220.png",
+      "price": 8000
+    }
+  ],
   "roles": []
 }

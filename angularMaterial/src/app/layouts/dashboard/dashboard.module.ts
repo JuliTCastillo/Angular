@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import { MatFormFieldModule } from '@angular/material/form-field'; // Importar MatFormFieldModule
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -23,6 +24,7 @@ import { LoginDialogComponent } from './pages/home/components/login-dialog/login
   ],
   imports: [
     CommonModule,
+    MatFormFieldModule,
     DashboardRoutingModule,
     MatSidenavModule,
     MatToolbarModule,

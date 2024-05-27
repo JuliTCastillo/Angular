@@ -11,7 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
@@ -34,7 +34,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
       FormFieldValidationErrorsPipe,
       ResaltadoDirective,
       RepetirDirective,
-      MatProgressSpinnerModule
+      MatProgressSpinnerModule,
+      CommonModule,
+      FormsModule, // Agregar FormsModule si es necesario
     ],
   })
   export class SharedModule { }

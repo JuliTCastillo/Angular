@@ -4,7 +4,7 @@ import { ISale } from "./models";
 
 const SALES_DB : ISale[] = [
     {
-        id: 1,
+        id: "1",
         buyer: {
             id: "1",
             createdAt: new Date(),
@@ -14,7 +14,9 @@ const SALES_DB : ISale[] = [
             role: "USER"
         },
         product: {
-            id: 1,
+            id: "2",
+            description: "",
+            image: "",
             name: "Curso python",
             price: 15000,
         },
@@ -44,12 +46,12 @@ export class SalesService{
     }
 
     // //Eliminar
-    deleteSales(id : number){
+    deleteSales(id : string){
         return of(SALES_DB.filter((sale)=> sale.id != id))
     }
 
     // //modificar
-    updateSale(id : number, data : ISale){
+    updateSale(id : string, data : ISale){
         return of(
             SALES_DB.map((sale)=> (sale.id === id ? {...sale, ...data} : sale))
         )

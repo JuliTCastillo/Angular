@@ -1,4 +1,8 @@
 .banner {
-    // background-color: rgba(238, 170, 193, 0.377);
-    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.portada{
+    width: 500px;
 }

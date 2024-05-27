@@ -7,6 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DashboardModule } from './layouts/dashboard/dashboard.module';
 import { AuthComponent } from './layouts/auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastService, AngularToastifyModule } from 'angular-toastify'; 
 
 @NgModule({
   declarations: [
@@ -18,9 +19,11 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     DashboardModule,
     HttpClientModule, //Para usar la API
+    AngularToastifyModule,
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    ToastService,
   ],
   bootstrap: [AppComponent]
 })

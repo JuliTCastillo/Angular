@@ -11,7 +11,7 @@ import { AlertsService } from '../../../../core/services/alerts.service';
 
 //implementamos el ciclo de vida de OnInit que es una interfaz
 export class ProductsComponent implements OnInit{
-  displayedColumns = ["id", "name", "price", "actions"];
+  displayedColumns = ["id", "name","description", "price", "image", "actions"];
 
   //? Muy importante crear la interfaz del array
   products : IProduct[] = [];
@@ -32,6 +32,12 @@ export class ProductsComponent implements OnInit{
   //Importante poner la función para cumplir el contrato de la implementación 
   ngOnInit(): void {
     //ngOnInit se usa para hacer consulta con el servicio
-    this.products = this._miServicio.getProducts();
+    // this.products = this._miServicio.getProducts();
+    this._miServicio.getProducts().subscribe({
+      next: (prod) => {
+        console.log("next: ", prod)
+        this.products = prod
+      }
+    })
   }
 }
