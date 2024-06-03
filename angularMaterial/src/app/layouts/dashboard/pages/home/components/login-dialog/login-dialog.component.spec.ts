@@ -1,11 +1,9 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from "@angular/core/testing"
-import { LoginDialogComponent } from "./pages/home/components/login-dialog/login-dialog.component";
-import { SharedModule } from "../../shared/shared.module";
+import { LoginDialogComponent } from "./login-dialog.component";
+import { SharedModule } from "../../../../../../shared/shared.module";
 import { MatDialogRef } from "@angular/material/dialog";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
-import { Component } from "@angular/core";
-import { LoginService } from "./pages/home/components/login-dialog/login.service";
-import { of } from "rxjs";
+import { LoginService } from "../../../../../../core/services/login.service";
 
 describe("LoginComponent", () =>{
     //Es para obtener todas las funcionalidades del componente

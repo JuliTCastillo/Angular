@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { IUser } from "../../../users/models";
-import { ILoginData } from "./models";
+import { IUser } from "../../layouts/dashboard/pages/users/models";
+import { ILoginData } from "../../layouts/dashboard/pages/home/components/login-dialog/models";
 import { Router } from "@angular/router";
 
 @Injectable({
@@ -36,8 +36,7 @@ export class LoginService {
     verifyToken() : boolean{
         //estamos preguntando si este token existe
         const token = localStorage.getItem('accessToken');
-        if(token)return true
-        else return false
+        return !!token
 
     }
 

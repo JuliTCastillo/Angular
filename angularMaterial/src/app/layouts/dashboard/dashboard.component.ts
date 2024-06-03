@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from './pages/home/components/login-dialog/login-dialog.component';
-import { LoginService } from './pages/home/components/login-dialog/login.service';
+import { LoginService } from '../../core/services/login.service';
 
 @Component({
   selector: 'app-dashboard',
